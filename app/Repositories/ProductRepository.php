@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ProductRepository
 {
-    public function getProducts(int $perPage, array $params)
+    public function getProducts(int $perPage, array $params): \Illuminate\Contracts\Pagination\Paginator
     {
         $query = Product::with('categories')->when(
             empty($params) || !isset($params[FilterParamsEnum::PUBLISHED]),
